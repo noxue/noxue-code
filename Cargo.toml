@@ -1,0 +1,34 @@
+[package]
+edition = "2021"
+name = "noxue-code"
+version = "0.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = {version = "0.4", features = ["headers", "multipart"]}
+chrono = "0.4"
+dotenv = "0.15"
+dotenv_codegen = "0.15"
+headers = "0.3"
+hex = "0.4"
+http-body = "0.4.3"
+hyper = "0.14"
+jsonwebtoken = "8"
+log = "0.4"
+log4rs = "1"
+once_cell = "1.9"
+rand = "0.8"
+redis = "0.21"
+rust-crypto = "0.2"
+serde = {version = "1.0", features = ["derive"]}
+serde-xml-rs = "0.5"
+serde_json = "1"
+# sqlx = {version = "0.5.11", features = ["runtime-tokio-rustls", "mysql", "time", "chrono"]}
+noxue-compiler = "0.1.1"
+tokio = {version = "1.0", features = ["full"]}
+tower-http = {version = "0.2.0", features = ["cors", "fs"]}
+tracing = "0.1"
+tracing-subscriber = {version = "0.3", features = ["env-filter"]}
+urlencoding = "2"
+uuid = {version = "0.8", features = ["serde", "v4"]}

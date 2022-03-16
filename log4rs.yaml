@@ -1,0 +1,19 @@
+# log4rs.yaml
+# 检查配置文件变动的时间间隔
+refresh_rate: 30 seconds
+# appender 负责将日志收集到控制台或文件, 可配置多个
+appenders:
+  stdout:
+    kind: console
+  file:
+    kind: file
+    path: "log/log.log"
+    encoder:
+      # log 信息模式
+      pattern: "{d} - {M}:{L} -> {m}{n}"
+# 对全局 log 进行配置
+root:
+  level: debug
+  appenders:
+    - stdout
+    - file
