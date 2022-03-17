@@ -702,9 +702,14 @@ dependencies = [
 
 [[package]]
 name = "noxue-compiler"
-version = "0.1.1"
+version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a82e45349e0344cd6ca6408409ce0e6dab06718bbedafb34d8e003566037f5a2"
+checksum = "76c4bd8ff99d8012b4936a409caadf9ad4659f4f0b05bc13340b8ac90b592b9c"
+dependencies = [
+ "serde",
+ "serde_json",
+ "uuid",
+]
 
 [[package]]
 name = "ntapi"

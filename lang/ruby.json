@@ -1,0 +1,7 @@
+{
+    "image": "ruby",
+    "file": "test.rb",
+    "cmd": "ruby test.rb",
+    "timeout": 5,
+    "memory": "50MB"
+}

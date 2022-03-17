@@ -14,109 +14,31 @@ pub struct CodeInfo {
 }
 
 pub async fn run_code(body: Json<CodeInfo>) -> Res<Value> {
-    let timeout = 2;
-
     let mut res = Res::default();
 
     let lang = &body.lang;
     let code = &body.code;
     let input = &body.input.clone().unwrap_or_default();
 
-    let out = if lang == "c" {
-        match lang::c::run(&code, &input, timeout) {
-            Ok(v) => v,
-            Err(e) => {
-                log::error!("运行出错:{:#?}", e);
-                res.set_code(1);
-                res.set_msg(&e);
-                return res;
-            }
-        }
-    } else if lang == "cpp" {
-        match lang::cpp::run(&code, &input, timeout) {
-            Ok(v) => v,
-            Err(e) => {
-                log::error!("运行出错:{:#?}", e);
-                res.set_code(1);
-                res.set_msg(&e);
-                return res;
-            }
-        }
-    } else if lang == "python2" {
-        match lang::python2::run(&code, &input, timeout) {
-            Ok(v) => v,
-            Err(e) => {
-                log::error!("运行出错:{:#?}", e);
-                res.set_code(1);
-                res.set_msg(&e);
-                return res;
-            }
-        }
-    } else if lang == "python3" {
-        match lang::python3::run(&code, &input, timeout) {
-            Ok(v) => v,
-            Err(e) => {
-                log::error!("运行出错:{:#?}", e);
-                res.set_code(1);
-                res.set_msg(&e);
-                return res;
-            }
-        }
-    } else if lang == "php5" {
-        match lang::php56::run(&code, &input, timeout) {
-            Ok(v) => v,
-            Err(e) => {
-                log::error!("运行出错:{:#?}", e);
-                res.set_code(1);
-                res.set_msg(&e);
-                return res;
-            }
-        }
-    } else if lang == "php7" {
-        match lang::php7::run(&code, &input, timeout) {
-            Ok(v) => v,
-            Err(e) => {
-                log::error!("运行出错:{:#?}", e);
-                res.set_code(1);
-                res.set_msg(&e);
-                return res;
-            }
-        }
-    } else if lang == "php8" {
-        match lang::php8::run(&code, &input, timeout) {
-            Ok(v) => v,
-            Err(e) => {
-                log::error!("运行出错:{:#?}", e);
-                res.set_code(1);
-                res.set_msg(&e);
-                return res;
-            }
-        }
-    } else if lang == "ruby" {
-        match lang::ruby::run(&code, &input, timeout) {
-            Ok(v) => v,
-            Err(e) => {
-                log::error!("运行出错:{:#?}", e);
-                res.set_code(1);
-                res.set_msg(&e);
-                return res;
-            }
-        }
-    } else if lang == "golang" {
-        match lang::golang::run(&code, &input, timeout) {
-            Ok(v) => v,
-            Err(e) => {
-                log::error!("运行出错:{:#?}", e);
-                res.set_code(1);
-                res.set_msg(&e);
-                return res;
-            }
-        }
-    } else {
-        log::error!("不支持该语言:{}", lang);
+    log::debug!("lang:{}", lang);
+
+    let file = format!("./lang/{}.json", lang);
+    // 这里检查一下运行的语言模板文件是否存在，方便返回更加友好的提示信息
+    if !std::path::Path::new(&file).exists() {
         res.set_code(2);
         res.set_msg(&format!("暂时不支持该语言:{}", lang));
         return res;
+    }
+
+    // 调用执行函数获取执行结果
+    let out = match lang::run(&std::fs::read_to_string(file).unwrap(), &code, &input) {
+        Ok(v) => v,
+        Err(e) => {
+            log::error!("运行出错:{:#?}", e);
+            res.set_code(1);
+            res.set_msg(&e);
+            return res;
+        }
     };
 
     debug!("ouput:{:#?}", out);

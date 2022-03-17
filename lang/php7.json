@@ -1,0 +1,7 @@
+{
+    "image": "php:7",
+    "file": "test.php",
+    "cmd": "php test.php",
+    "timeout": 5,
+    "memory": "50MB"
+}
