@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use axum::Json;
 use log::debug;
 use serde::{Deserialize, Serialize};
@@ -19,6 +21,18 @@ pub async fn run_code(body: Json<CodeInfo>) -> Res<Value> {
     let lang = &body.lang;
     let code = &body.code;
     let input = &body.input.clone().unwrap_or_default();
+
+    if code.len() > 1024 * 400 {
+        res.set_code(1);
+        res.set_msg("提交的代码太长，最多允许400KB");
+        return res;
+    }
+
+    if input.len() > 1024 * 20 {
+        res.set_code(1);
+        res.set_msg("输入的太长，最多允许20KB");
+        return res;
+    }
 
     log::debug!("lang:{}", lang);
 
@@ -49,3 +63,35 @@ pub async fn run_code(body: Json<CodeInfo>) -> Res<Value> {
 
     res
 }
+
+// #[test]
+// fn test() {
+//     let code = r#"
+// #include <stdio.h>
+
+// int main(){
+//     printf("hello");
+//     for(;;);
+//     return 0;
+// }"#;
+//     let tpl = r#"
+// {
+// "image": "gcc",
+// "file": "test.c",
+// "cmd": "gcc test.c -o test\nif test -f \"./test\"; then\n./test\nfi",
+// "timeout": 50,
+// "memory":"20MB"
+// }
+// "#;
+
+//     for i in 0..100 {
+//         std::thread::spawn(move || {
+//             let out = lang::run(tpl, code, "");
+//             println!("{:?}", out);
+//         });
+//     }
+//     loop {
+//         std::thread::sleep(Duration::from_secs(1));
+//     }
+//     // assert_eq!(out.unwrap().stdout, "hello");
+// }

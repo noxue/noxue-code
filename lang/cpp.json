@@ -3,5 +3,6 @@
     "file": "test.cpp",
     "cmd": "g++ test.cpp -o test\nif test -f \"./test\"; then\n./test\nfi",
     "timeout": 5,
-    "memory": "50MB"
+    "memory": "10MB",
+    "cpuset":"0-3"
 }

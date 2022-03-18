@@ -3,5 +3,6 @@
     "file": "test.go",
     "cmd": "go run test.go",
     "timeout": 5,
-    "memory": "50MB"
+    "memory": "10MB",
+    "cpuset":"0-3"
 }

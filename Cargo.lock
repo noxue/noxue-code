@@ -702,9 +702,7 @@ dependencies = [
 
 [[package]]
 name = "noxue-compiler"
-version = "1.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "76c4bd8ff99d8012b4936a409caadf9ad4659f4f0b05bc13340b8ac90b592b9c"
+version = "1.0.3"
 dependencies = [
  "serde",
  "serde_json",
