@@ -3,6 +3,6 @@
     "file": "test.pl",
     "cmd": "perl ./test.pl",
     "timeout": 5,
-    "memory": "50MB",
+    "memory": "100MB",
     "cpuset": "0-3"
 }

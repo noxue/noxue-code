@@ -1,7 +1,7 @@
 {
     "image": "gcc",
     "file": "test.cpp",
-    "cmd": "g++ test.cpp -o test\nif test -f \"./test\"; then\n./test\nfi",
+    "cmd": "g++ test.cpp -std=c++20 -o test\nif test -f \"./test\"; then\n./test\nfi",
     "timeout": 5,
     "memory": "100MB",
     "cpuset":"0-3"

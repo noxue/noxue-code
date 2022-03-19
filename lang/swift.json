@@ -3,6 +3,6 @@
     "file": "test.swift",
     "cmd": "swiftc test.swift -o test\nif test -f \"./test\"; then\n./test\nfi",
     "timeout": 5,
-    "memory": "50MB",
+    "memory": "100MB",
     "cpuset":"0-3"
 }

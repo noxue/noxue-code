@@ -1,8 +1,8 @@
 {
     "image": "huntprod/asm",
     "file": "test.asm",
-    "cmd": "nasm -felf64 test.asm\nif test -f \"./test.o\"; then\nld ./test.o -o test\n./test\nfi\nif test -f \"./test\"; then\n./test\nfi",
+    "cmd": "nasm -felf64 test.asm\nif test -f \"./test.o\"; then\nld ./test.o -o test\nfi\nif test -f \"./test\"; then\n./test\nfi",
     "timeout": 5,
-    "memory": "50MB",
+    "memory": "100MB",
     "cpuset": "0-3"
 }

@@ -1,7 +1,7 @@
 {
     "image": "gcc",
     "file": "test.c",
-    "cmd": "gcc test.c -o test\nif test -f \"./test\"; then\n./test\nfi",
+    "cmd": "gcc -std=c11 test.c -o test\nif test -f \"./test\"; then\n./test\nfi",
     "timeout": 5,
     "memory": "100MB",
     "cpuset":"0-3"

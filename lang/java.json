@@ -3,6 +3,6 @@
     "file": "regex::class\\s+([a-zA-Z_][a-zA-Z0-9_]*)::java",
     "cmd": "javac ./$cap1.java\njava $cap1\n",
     "timeout": 5,
-    "memory": "50MB",
+    "memory": "100MB",
     "cpuset": "0-3"
 }
