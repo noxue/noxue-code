@@ -24,4 +24,9 @@ docker pull python:3
 docker pull adityai/jdk13
 docker pull ruby
 docker pull node
+;; docker pull codesignal/cs
+;; docker pull zenika/kotlin 没找到前端编辑器支持
+;; docker pull erlang
+docker pull swift
+docker pull huntprod/asm
 ```

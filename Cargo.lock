@@ -688,6 +688,7 @@ dependencies = [
  "once_cell",
  "rand 0.8.5",
  "redis",
+ "regex",
  "rust-crypto",
  "serde",
  "serde-xml-rs",
@@ -704,6 +705,7 @@ dependencies = [
 name = "noxue-compiler"
 version = "1.0.4"
 dependencies = [
+ "log",
  "serde",
  "serde_json",
  "uuid",
