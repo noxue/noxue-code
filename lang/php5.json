@@ -3,6 +3,6 @@
     "file": "test.php",
     "cmd": "php test.php",
     "timeout": 5,
-    "memory": "10MB",
+    "memory": "50MB",
     "cpuset":"0-3"
 }

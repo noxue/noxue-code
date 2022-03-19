@@ -1,0 +1,8 @@
+{
+    "image": "gcc",
+    "file": "test.sh",
+    "cmd": "chmod +x ./test.sh\n./test.sh",
+    "timeout": 5,
+    "memory": "50MB",
+    "cpuset": "0-3"
+}

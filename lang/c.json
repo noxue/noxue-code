@@ -3,6 +3,6 @@
     "file": "test.c",
     "cmd": "gcc test.c -o test\nif test -f \"./test\"; then\n./test\nfi",
     "timeout": 5,
-    "memory": "10MB",
+    "memory": "50MB",
     "cpuset":"0-3"
 }

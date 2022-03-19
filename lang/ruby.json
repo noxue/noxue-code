@@ -3,6 +3,6 @@
     "file": "test.rb",
     "cmd": "ruby test.rb",
     "timeout": 5,
-    "memory": "10MB",
+    "memory": "50MB",
     "cpuset":"0-3"
 }

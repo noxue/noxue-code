@@ -3,6 +3,6 @@
     "file": "test.py",
     "cmd": "python test.py",
     "timeout": 5,
-    "memory": "10MB",
+    "memory": "50MB",
     "cpuset":"0-3"
 }

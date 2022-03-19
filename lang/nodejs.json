@@ -1,0 +1,8 @@
+{
+    "image": "node",
+    "file": "test.js",
+    "cmd": "node ./test.js",
+    "timeout": 5,
+    "memory": "50MB",
+    "cpuset": "0-3"
+}

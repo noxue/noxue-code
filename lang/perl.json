@@ -1,0 +1,8 @@
+{
+    "image": "perl",
+    "file": "test.pl",
+    "cmd": "perl ./test.pl",
+    "timeout": 5,
+    "memory": "50MB",
+    "cpuset": "0-3"
+}
