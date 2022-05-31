@@ -70,7 +70,15 @@ pub async fn run_code(body: Json<CodeInfo>) -> Res<Value> {
         log::debug!("rule:{}, ext:{}, code:\n{}\n", rule, ext, code);
         // 从提交的代码中去根据正则匹配类名
         let re = Regex::new(rule).unwrap();
-        let caps = re.captures(code).unwrap();
+        let caps = match re.captures(code) {
+            Some(v) => v,
+            None => {
+                log::error!("用户选择语言出错，或者代码出错");
+                res.set_code(5);
+                res.set_msg("确认选择的语言是否正确，或代码出错");
+                return res;
+            }
+        };
 
         // 把匹配到的变量值，设置成系统变量，添加到 tpl.cmd 前面
         // 以 cap1 cap2 cap3 的方式传入脚本
