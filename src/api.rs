@@ -1,7 +1,7 @@
 use std::time::Duration;
 
 use axum::Json;
-use log::debug;
+use log::{debug, error};
 use regex::Regex;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
@@ -33,6 +33,9 @@ pub async fn run_code(body: Json<CodeInfo>) -> Res<Value> {
     let lang = &body.lang;
     let code = &body.code;
     let input = &body.input.clone().unwrap_or_default();
+
+    // 记录提交的代码，找出bug
+    error!("执行代码：{:#?}", body);
 
     if code.len() > 1024 * 400 {
         res.set_code(1);
